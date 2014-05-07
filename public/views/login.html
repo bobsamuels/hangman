@@ -1,0 +1,15 @@
+<div>
+    <H2>Login to play Hangman</H2>
+    <div class="error" ng-if="errMsg">{{errMsg}}</div>
+    <div>
+        <label for="username">Username</label>
+        <input type="text" id="username" ng-model="loginCredentials.username"/>
+    </div>
+    <div>
+        <label for="password">Password</label>
+        <input type="password" id="password" ng-model="loginCredentials.password"/>
+    </div>
+    <div>
+        <button ng-click="login()">Login</button>
+    </div>
+</div>

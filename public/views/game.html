@@ -1,0 +1,31 @@
+<div ng-controller="GameCtrl as gameCtrl">
+    <H5>Chosen Letters:</H5>
+    <ul class="list-inline">
+        <li ng-repeat="letter in chosenLetters()">{{letter}}</li>
+    </ul>
+
+    <div style="margin:4px;" ng-if="!gameOver()">
+        <div ng-if="hasMoreGuesses()">
+            <div style="margin:5px 0px;">You have {{numberOfGuessesRemaning()}} guesses left.</div>
+            <p class="bg-warning" ng-if="letterErr">{{letterErr}}</p>
+            <input type="text" size="2" maxlength="1" ng-model="guess.text"/> <button ng-click="addGuess()">Guess Letter</button>
+        </div>
+
+        <div style="margin:4px;" ng-if="showWordGuess()">
+            <div style="margin:5px 0px;">Sorry, you ran out of letter guesses.  You have one chance to guess the word.</div>
+            <input type="text" size="20" maxlength="50" ng-model="answer.text"/> <button ng-click="submitAnswer()">Guess The Word</button>
+       </div>
+    </div>
+    <br/>
+    <div>
+        <H1>{{displayWord()}}</H1>
+    </div>
+    <br/>
+
+    <div ng-if="gameOver()">
+        <span ng-if="gameWon()">Correct!  You won!</span>
+        <span ng-if="!gameWon()">Sorry, you lost. :{</span>
+        <div style="margin:5px 0px;">The word was <strong>{{chosenWord()}}</strong></div>
+        <div style="margin:5px 0px;"><button ng-click="resetGame()">Play Again</button></div>
+    </div>
+</div>
