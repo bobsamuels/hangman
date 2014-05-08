@@ -13,7 +13,7 @@ hangmanModule.service("hangmanService", function($http, $q) {
         $http.get("/randomWord")
             .success(function (data) {
                 hangmanData.chosenWord = data.replace(/"/g, "");
-                return result.resolve();
+                return result.resolve(hangmanData);
             })
             .error(function (err) {
                 hangmanData.gameError = err;

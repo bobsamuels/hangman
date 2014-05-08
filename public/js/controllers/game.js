@@ -24,8 +24,6 @@ hangmanModule.controller('GameCtrl', function ($scope, $location, hangmanService
     }
 
     $scope.addGuess = function(){
-        console.log($scope.guess);
-        console.log($scope);
         if(!hangmanService.recordGuess($scope.guess.text))
         {
             $scope.letterErr = "You already guessed that letter";
