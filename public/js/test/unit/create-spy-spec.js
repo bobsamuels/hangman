@@ -1,22 +1,27 @@
 describe("Simple Create Spy tests", function(){
-    beforeEach(function(){
-       var self = this;
-       var MathObj = function(){
-           var progressMsg = "";
-           this.reportProgress = function(){return this.progressMsg;}
-       };
-       MathObj.prototype.addFuzzyNumbers = function(firstNum, secondNum){
+    var MathObj = function(){
+        var progressMsg = "";
+
+        this.reportProgress = function(){
+            return this.progressMsg;
+        }
+
+        this.addFuzzyNumbers = function(firstNum, secondNum){
             var fuzz = 0.1;
             this.progressMsg = this.recordProgress();
             return (fuzz * firstNum + fuzz * secondNum);
         };
-        MathObj.prototype.recordProgress = function(){
+
+        this.recordProgress = function(){
             return "I'm doing stuff";
-        };
+        }
+    };
 
-
-        self.mathObj = new MathObj();
+    beforeEach(function(){
+        var self = this;
+       self.mathObj = new MathObj();
     });
+
     it("Test fuzzy math alone", function(){
         var answer = this.mathObj.addFuzzyNumbers(10, 20);
         expect(answer).toBe(3);
